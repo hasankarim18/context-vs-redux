@@ -24,9 +24,13 @@ function App() {
           <h3>Cons: {cons}</h3>
         </div>
         <DataContext.Provider value={data} >
-          <Pros />
-          <Cons />
+          <hr />
           <ProsCons />
+          <hr />
+          <Pros />
+          <hr />
+          <Cons />
+          <hr />
         </DataContext.Provider>
 
         <div>

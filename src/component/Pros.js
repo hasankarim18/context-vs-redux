@@ -13,7 +13,7 @@ const Pros = () => {
     return (
         <div>
             <p>No of pros: <span style={{ fontSize: "24px" }} >{pros}</span> </p>
-            <p>Pros component renders: <span>{renders.current++}</span></p>
+            <p>Pros component renders: <span style={{ fontSize: "24px" }}>{renders.current++}</span></p>
         </div>
     )
 }
