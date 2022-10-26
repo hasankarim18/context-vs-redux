@@ -1,10 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState } from 'react';
 import './App.css';
 import Cons from './component/Cons';
 import Pros from './component/Pros';
 import ProsCons from './component/ProsCons';
+import DataContext from './context/DataContext';
 
 function App() {
+
+  const [data, setData] = useState({ pros: 0, cons: 0 })
+
+  const { pros = 0, cons = 0 } = data || {}
+
   return (
     <div className="App">
       <div className="container">
@@ -13,17 +20,22 @@ function App() {
         </div>
         <div>
           <h1>..Title..</h1>
-          <h3>Props: 0</h3>
-          <h3>Cons: 0</h3>
+          <h3>Props: {pros}</h3>
+          <h3>Cons: {cons}</h3>
         </div>
-
-        <Pros />
-        <Cons />
-        <ProsCons />
+        <DataContext.Provider value={data} >
+          <Pros />
+          <Cons />
+          <ProsCons />
+        </DataContext.Provider>
 
         <div>
-          <button className="btn btn-success me-3">Increment Pros</button>
-          <button className="btn btn-danger">Increment Cons</button>
+          <button
+            onClick={() => setData((data) => ({ ...data, pros: data.pros + 1 }))}
+            className="btn btn-success me-3">Increment Pros</button>
+          <button
+            onClick={() => setData((data) => ({ ...data, cons: data.cons + 1 }))}
+            className="btn btn-danger">Increment Cons</button>
 
         </div>
       </div>
